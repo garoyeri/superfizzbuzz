@@ -1,0 +1,14 @@
+{
+  "ServerUri": "https://sonarcloud.io",
+  "Organization": {
+    "Key": "garoyeri-github",
+    "Name": "Garo Yeriazarian"
+  },
+  "ProjectKey": "garoyeri-superfizzbuzz",
+  "Profiles": {
+    "CSharp": {
+      "ProfileKey": "AWGNHAygav0Eb9BJUR2e",
+      "ProfileTimestamp": "2017-12-20T02:41:25-06:00"
+    }
+  }
+}
