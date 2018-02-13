@@ -5,6 +5,8 @@ environment:
   OPENCOVER_VER: 4.6.519
   CODECOVTOKEN:
     secure: lcLrgEyHk1S8n86gQjdwSS2PSPRQ7S8+PXrr+ic67ktJp4i9Hz+FtMUaIjj8rMbC
+  SONARTOKEN:
+    secure: Ff4Kpig3CbIgOJ37jcA42xpHhbBN7Gn6qjGhxeD8BEFz5sVSPoFZKvqz6SokTywQ
 
 
 before_build:
@@ -13,9 +15,11 @@ before_build:
 
     nuget install -OutputDirectory packages -Version %OPENCOVER_VER% OpenCover
 
-build:
-  project: SuperFizzBuzz.sln
-  verbosity: minimal
+build_script:
+  - choco install "msbuild-sonarqube-runner" -y
+  - MSBuild.SonarQube.Runner.exe begin /k:"garoyeri-superfizzbuzz" /d:"sonar.host.url=https://sonarqube.com" /d:"sonar.login=%SONARTOKEN%"
+  - msbuild "SuperFizzBuzz.sln"
+  - MSBuild.SonarQube.Runner.exe end /d:"sonar.login=%SONARTOKEN%"
 
 test_script:
   - cmd: packages\OpenCover.%OPENCOVER_VER%\tools\OpenCover.Console.exe -register:user -target:"%PROGRAMFILES%\dotnet\dotnet.exe" -targetargs:"test SuperFizzBuzz.Core.Tests" -output:"coverage.xml" -filter:"+[SuperFizzBuzz.Core*]* -[SuperFizzBuzz.Core.Tests*]*" -oldstyle
