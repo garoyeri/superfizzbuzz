@@ -10,7 +10,7 @@ namespace SuperFizzBuzz.Core
     /// </summary>
     public class FizzBuzzOmatic
     {
-        List<ConfigurationItem> _configuration = new List<ConfigurationItem>();
+        readonly List<ConfigurationItem> _configuration = new List<ConfigurationItem>();
 
         /// <summary>
         /// Initializes a new instance of the <see cref="FizzBuzzOmatic"/> class.
@@ -48,8 +48,6 @@ namespace SuperFizzBuzz.Core
         /// <returns>The correct FizzBuzz sequence.</returns>
         public IEnumerable<string> ProduceRange(int start, int end)
         {
-            var index = start;
-
             var count = Math.Abs((start < end) ? (end - start + 1) : (start - end + 1));
             var direction = (start < end) ? 1 : -1;
 

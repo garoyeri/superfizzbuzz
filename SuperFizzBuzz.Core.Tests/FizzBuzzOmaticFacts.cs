@@ -14,6 +14,8 @@ namespace SuperFizzBuzz.Core.Tests
         public void can_create()
         {
             var fizzer = new FizzBuzzOmatic();
+
+            Assert.NotNull(fizzer);
         }
 
         [Fact]
