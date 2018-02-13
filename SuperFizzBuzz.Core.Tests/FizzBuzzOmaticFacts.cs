@@ -16,6 +16,23 @@ namespace SuperFizzBuzz.Core.Tests
             var fizzer = new FizzBuzzOmatic();
         }
 
+        [Fact]
+        public void can_throw_exception_on_bad_message()
+        {
+            var fizzer = new FizzBuzzOmatic();
+
+            Assert.Throws<ArgumentNullException>(() => fizzer.Add(10, null));
+        }
+
+        [Fact]
+        public void can_throw_exception_on_bad_multiple()
+        {
+            var fizzer = new FizzBuzzOmatic();
+
+            Assert.Throws<ArgumentException>(() => fizzer.Add(0, "Zero"));
+            Assert.Throws<ArgumentException>(() => fizzer.Add(-1, "Less than One"));
+        }
+
         /// <summary>
         /// Regular fizzbuzz output is typically described as: Write a program that prints the numbers from 1 to 100.
         /// But for multiples of 3, print "Fizz" instead of the number.

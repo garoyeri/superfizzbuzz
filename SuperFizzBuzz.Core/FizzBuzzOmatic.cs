@@ -32,6 +32,7 @@ namespace SuperFizzBuzz.Core
         public FizzBuzzOmatic Add(int multiple, string message)
         {
             if (message == null) throw new ArgumentNullException("message", "Message cannot be null");
+            if (multiple <= 0) throw new ArgumentException("Multiple must be >0", "multiple");
 
             _configuration.RemoveAll(c => c.Multiple == multiple);
             _configuration.Add(new ConfigurationItem(multiple, message));
