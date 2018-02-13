@@ -3,17 +3,19 @@ image: Visual Studio 2017
 
 environment:
   OPENCOVER_VER: 4.6.519
+  CODECOVTOKEN:
+    secure: lcLrgEyHk1S8n86gQjdwSS2PSPRQ7S8+PXrr+ic67ktJp4i9Hz+FtMUaIjj8rMbC
+
 
 before_build:
-- cmd: >-
-    nuget restore
-    nuget install -Verbosity quiet -OutputDirectory packages -Version %OPENCOVER_VER% OpenCover
+  - nuget restore
+  - nuget install -Verbosity quiet -OutputDirectory packages -Version %OPENCOVER_VER% OpenCover
 
 build:
   verbosity: minimal
 
 test_script:
-- cmd: packages\OpenCover.%OPENCOVER_VER%\tools\OpenCover.Console.exe -register:user -target:"%xunit20%\xunit.console.x86.exe" -targetargs:"SuperFizzBuzz.Core.Tests.dll -noshadow" -output:"coverage.xml" -filter:"+[SuperFizzBuzz.Core*]* -[SuperFizzBuzz.Tests*]*"
+  - cmd: packages\OpenCover.%OPENCOVER_VER%\tools\OpenCover.Console.exe -register:user -target:"%xunit20%\xunit.console.x86.exe" -targetargs:"SuperFizzBuzz.Core.Tests.dll -noshadow" -output:"coverage.xml" -filter:"+[SuperFizzBuzz.Core*]* -[SuperFizzBuzz.Tests*]*"
 
 after_test:
   - ps: |
