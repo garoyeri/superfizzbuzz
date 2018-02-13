@@ -18,7 +18,7 @@ build:
   verbosity: minimal
 
 test_script:
-  - cmd: packages\OpenCover.%OPENCOVER_VER%\tools\OpenCover.Console.exe -register:user -target:"%PROGRAMFILES%\dotnet\dotnet.exe" -targetargs:"test SuperFizzBuzz.Core.Tests" -output:"coverage.xml" -filter:"+[SuperFizzBuzz.Core*]* -[SuperFizzBuzz.Core.Tests*]*"
+  - cmd: packages\OpenCover.%OPENCOVER_VER%\tools\OpenCover.Console.exe -register:user -target:"%PROGRAMFILES%\dotnet\dotnet.exe" -targetargs:"test SuperFizzBuzz.Core.Tests" -output:"coverage.xml" -filter:"+[SuperFizzBuzz.Core*]* -[SuperFizzBuzz.Core.Tests*]*" -oldstyle
 
 after_test:
   - ps: |
