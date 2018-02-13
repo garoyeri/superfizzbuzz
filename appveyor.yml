@@ -8,11 +8,14 @@ environment:
 
 
 before_build:
-  - nuget restore
-  - nuget install -Verbosity quiet -OutputDirectory packages -Version %OPENCOVER_VER% OpenCover
+- cmd: >-
+    nuget restore
+
+    nuget install -Verbosity quiet -OutputDirectory packages -Version %OPENCOVER_VER% OpenCover
 
 build:
-  msbuild /verbosity:quiet "SuperFizzBuzz.sln"
+  project: SuperFizzBuzz.sln
+  verbosity: minimal
 
 test_script:
   - cmd: packages\OpenCover.%OPENCOVER_VER%\tools\OpenCover.Console.exe -register:user -target:"%xunit20%\xunit.console.x86.exe" -targetargs:"SuperFizzBuzz.Core.Tests.dll -noshadow" -output:"coverage.xml" -filter:"+[SuperFizzBuzz.Core*]* -[SuperFizzBuzz.Tests*]*"
