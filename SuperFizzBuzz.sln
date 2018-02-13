@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
-VisualStudioVersion = 15.0.27130.2026
+VisualStudioVersion = 15.0.27130.2027
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SuperFizzBuzz.Core", "SuperFizzBuzz.Core\SuperFizzBuzz.Core.csproj", "{FF68D34C-8965-4C24-A067-B4E2585802B9}"
 EndProject
@@ -9,7 +9,12 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SuperFizzBuzz.Core.Tests", 
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SuperFizzBuzz", "SuperFizzBuzz\SuperFizzBuzz.csproj", "{F4D626C1-6D0B-4FB8-88FF-3A6B0B6B5DC6}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ClassicFizzBuzz", "ClassicFizzBuzz\ClassicFizzBuzz.csproj", "{535DB8BD-26AE-4932-A7E5-9569E22E2858}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ClassicFizzBuzz", "ClassicFizzBuzz\ClassicFizzBuzz.csproj", "{535DB8BD-26AE-4932-A7E5-9569E22E2858}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{F978AEA7-3049-4289-84F3-FFCD1A0D2EB6}"
+	ProjectSection(SolutionItems) = preProject
+		appveyor.yml = appveyor.yml
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
