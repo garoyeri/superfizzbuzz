@@ -18,7 +18,7 @@ build:
   verbosity: minimal
 
 test_script:
-  - cmd: packages\OpenCover.%OPENCOVER_VER%\tools\OpenCover.Console.exe -register:user -target:"%xunit20%\xunit.console.x86.exe" -targetargs:"SuperFizzBuzz.Core.Tests.dll -noshadow" -output:"coverage.xml" -filter:"+[SuperFizzBuzz.Core*]* -[SuperFizzBuzz.Tests*]*"
+  - cmd: packages\OpenCover.%OPENCOVER_VER%\tools\OpenCover.Console.exe -register:user -target:"%xunit20%\xunit.console.x86.exe" -targetargs:"SuperFizzBuzz.Core.Tests\bin\Debug\netcoreapp2.0\SuperFizzBuzz.Core.Tests.dll -noshadow" -output:"coverage.xml" -filter:"+[SuperFizzBuzz.Core*]* -[SuperFizzBuzz.Tests*]*"
 
 after_test:
   - ps: |
