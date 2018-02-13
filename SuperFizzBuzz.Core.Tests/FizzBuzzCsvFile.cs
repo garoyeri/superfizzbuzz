@@ -18,7 +18,7 @@ namespace SuperFizzBuzz.Core.Tests
         /// <param name="filename">The path to the data file, both absolute and relative paths are allowed.</param>
         /// <returns>A sequence of messages from the "Messages" column of the data file.</returns>
         public static IEnumerable<string> Read<T>(string filename)
-            where T: DataRecord
+            where T: IDataRecord
         {
             // make path relative to appdomain directory instead of Environment.CurrentDirectory
             if (!Path.IsPathRooted(filename))
@@ -40,7 +40,7 @@ namespace SuperFizzBuzz.Core.Tests
         /// <summary>
         /// A data record for FizzBuzz test data files. At least the "Message" column is required.
         /// </summary>
-        public interface DataRecord
+        public interface IDataRecord
         {
             string Message { get; set; }
         }
@@ -48,7 +48,7 @@ namespace SuperFizzBuzz.Core.Tests
         /// <summary>
         /// Data record for the classic FizzBuzz test data.
         /// </summary>
-        public class FizzBuzzDataRecord : DataRecord
+        public class FizzBuzzDataRecord : IDataRecord
         {
             public string Id { get; set; }
             public string Mult3 { get; set; }
@@ -59,7 +59,7 @@ namespace SuperFizzBuzz.Core.Tests
         /// <summary>
         /// Data record for the Super Fizz Buzz test data.
         /// </summary>
-        public class SuperFizzBizzDataRecord : DataRecord
+        public class SuperFizzBizzDataRecord : IDataRecord
         {
             public string Id { get; set; }
             public string Mult3 { get; set; }
