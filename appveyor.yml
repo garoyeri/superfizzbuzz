@@ -30,4 +30,4 @@ after_build:
   - dotnet pack SuperFizzBuzz.Core /p:PackageVersion=%APPVEYOR_BUILD_VERSION%
 
 artifacts:
-  - path: "SuperFizzBuzz.Core\bin\Debug\*.nupkg"
+  - path: 'SuperFizzBuzz.Core\bin\Debug\*.nupkg'
