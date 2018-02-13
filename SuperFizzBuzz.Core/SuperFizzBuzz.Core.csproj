@@ -2,11 +2,11 @@
 
   <PropertyGroup>
     <TargetFramework>netstandard2.0</TargetFramework>
-    <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+    <GeneratePackageOnBuild>false</GeneratePackageOnBuild>
     <Authors>Garabed Yeriazarian</Authors>
     <Company />
     <Product>SuperFizzBuzz</Product>
-    <Copyright>Copyright 2018 Garabed Yeriazarian</Copyright>
+    <Copyright>Copyright 2018, Garabed Yeriazarian</Copyright>
     <PackageLicenseUrl>https://opensource.org/licenses/MIT</PackageLicenseUrl>
   </PropertyGroup>
 
