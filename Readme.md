@@ -4,4 +4,4 @@
 ![SonarStatus](https://sonarcloud.io/api/project_badges/measure?project=garoyeri-superfizzbuzz&metric=alert_status)
 
 # Super Fizz Buzz
-Just a sample code of Fizzing, Buzzing, and FizzBuzzing with unit testing, CI, and code coverage.
+Just a sample code of Fizzing, Buzzing, and FizzBuzzing with unit testing, CI, code smells and code coverage.
