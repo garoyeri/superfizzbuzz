@@ -17,21 +17,17 @@ before_build:
 
 build_script:
   - choco install "msbuild-sonarqube-runner" -y
-  - SonarQube.Scanner.MSBuild.exe begin /k:"garoyeri-superfizzbuzz" /d:sonar.organization="garoyeri-github" /d:sonar.host.url="https://sonarcloud.io" /d:sonar.login="%SONARTOKEN%"
+  - SonarQube.Scanner.MSBuild.exe begin /k:"garoyeri-superfizzbuzz" /d:sonar.organization="garoyeri-github" /d:sonar.host.url="https://sonarcloud.io" /d:sonar.login="%SONARTOKEN%" /d:sonar.cs.opencover.reportsPaths="%CD%\coverage.xml"
   - msbuild "SuperFizzBuzz.sln" /verbosity:minimal
-  - SonarQube.Scanner.MSBuild.exe end /d:sonar.login="%SONARTOKEN%"
 
 test_script:
   - cmd: packages\OpenCover.%OPENCOVER_VER%\tools\OpenCover.Console.exe -register:user -target:"%PROGRAMFILES%\dotnet\dotnet.exe" -targetargs:"test SuperFizzBuzz.Core.Tests" -output:"coverage.xml" -filter:"+[SuperFizzBuzz.Core*]* -[SuperFizzBuzz.Core.Tests*]*" -oldstyle
 
-after_test:
-  - ps: |
-      $env:PATH = 'C:\msys64\usr\bin;' + $env:PATH
-      Invoke-WebRequest -Uri 'https://codecov.io/bash' -OutFile codecov.sh
-      bash codecov.sh -f "coverage.xml" -t $env:CODECOVTOKEN
-
 after_build:
   - dotnet pack SuperFizzBuzz.Core /p:PackageVersion=%APPVEYOR_BUILD_VERSION%
+
+after_test:
+  - SonarQube.Scanner.MSBuild.exe end /d:sonar.login="%SONARTOKEN%"
 
 artifacts:
   - path: 'SuperFizzBuzz.Core\bin\Debug\*.nupkg'
