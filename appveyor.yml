@@ -17,9 +17,9 @@ before_build:
 
 build_script:
   - choco install "msbuild-sonarqube-runner" -y
-  - MSBuild.SonarQube.Runner.exe begin /k:"garoyeri-superfizzbuzz" /d:"sonar.host.url=https://sonarqube.com" /d:"sonar.login=%SONARTOKEN%"
-  - msbuild "SuperFizzBuzz.sln"
-  - MSBuild.SonarQube.Runner.exe end /d:"sonar.login=%SONARTOKEN%"
+  - SonarQube.Scanner.MSBuild.exe begin /k:"garoyeri-superfizzbuzz" /d:sonar.organization="garoyeri-github" /d:sonar.host.url="https://sonarcloud.io" /d:sonar.login="%SONARTOKEN%"
+  - msbuild "SuperFizzBuzz.sln" /verbosity:minimal
+  - SonarQube.Scanner.MSBuild.exe end /d:sonar.login="%SONARTOKEN%"
 
 test_script:
   - cmd: packages\OpenCover.%OPENCOVER_VER%\tools\OpenCover.Console.exe -register:user -target:"%PROGRAMFILES%\dotnet\dotnet.exe" -targetargs:"test SuperFizzBuzz.Core.Tests" -output:"coverage.xml" -filter:"+[SuperFizzBuzz.Core*]* -[SuperFizzBuzz.Core.Tests*]*" -oldstyle
