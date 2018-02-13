@@ -11,14 +11,14 @@ before_build:
 - cmd: >-
     nuget restore
 
-    nuget install -Verbosity quiet -OutputDirectory packages -Version %OPENCOVER_VER% OpenCover
+    nuget install -OutputDirectory packages -Version %OPENCOVER_VER% OpenCover
 
 build:
   project: SuperFizzBuzz.sln
   verbosity: minimal
 
 test_script:
-  - cmd: packages\OpenCover.%OPENCOVER_VER%\tools\OpenCover.Console.exe -register:user -target:"%xunit20%\xunit.console.x86.exe" -targetargs:"SuperFizzBuzz.Core.Tests\bin\Debug\netcoreapp2.0\SuperFizzBuzz.Core.Tests.dll -noshadow" -output:"coverage.xml" -filter:"+[SuperFizzBuzz.Core*]* -[SuperFizzBuzz.Tests*]*"
+  - cmd: packages\OpenCover.%OPENCOVER_VER%\tools\OpenCover.Console.exe -register:user -target:"%PROGRAMFILES%\dotnet\dotnet.exe" -targetargs:"test SuperFizzBuzz.Core.Tests" -output:"coverage.xml" -filter:"+[SuperFizzBuzz.Core*]* -[SuperFizzBuzz.Core.Tests*]*"
 
 after_test:
   - ps: |
